@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Krutika Jagdale — Security Engineer. Detection Engineering, AI Security, Cloud Defense. Full portfolio."/>
+<title>Krutika Jagdale | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#07080f;
+  --bg2:#0d0f1a;
+  --surface:#111320;
+  --surface2:#161828;
+  --border:#1e2235;
+  --border2:#252a40;
+  --accent:#7c6fff;
+  --accent2:#a78bfa;
+  --c1:#ff6b6b;
+  --c2:#7c6fff;
+  --c3:#06d6a0;
+  --c4:#ffd166;
+  --c5:#f77f00;
+  --c6:#4cc9f0;
+  --text:#eef0f8;
+  --text2:#9198b5;
+  --muted:#3a4060;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Outfit',sans-serif;
+  overflow-x:hidden;cursor:none;
+}
+
+/* Cursor */
+#cd{position:fixed;width:7px;height:7px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+#cr{position:fixed;width:34px;height:34px;border:1.5px solid rgba(124,111,255,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s}
+
+/* Grid bg */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(124,111,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(124,111,255,0.025) 1px,transparent 1px);background-size:70px 70px;pointer-events:none;z-index:0}
+
+.wrap{position:relative;z-index:1}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(7,8,15,0.88);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:64px;
+}
+
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand-icon{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:.75rem;color:#fff;
+}
+.nav-brand-name{font-family:'Outfit',sans-serif;font-weight:600;font-size:.88rem;color:var(--text)}
+.nav-brand-sub{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-top:.1rem}
+
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--text2);text-decoration:none;letter-spacing:.07em;
+  text-transform:uppercase;padding:0 1rem;
+  display:flex;align-items:center;height:64px;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+.nav-ext{display:flex;gap:.75rem;align-items:center}
+.nav-ext a{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--text2);text-decoration:none;letter-spacing:.07em;
+  padding:.42rem .9rem;border:1px solid var(--border2);
+  border-radius:2px;transition:all .2s;
+}
+.nav-ext a:hover{color:var(--accent);border-color:rgba(124,111,255,.4)}
+.nav-ext a.cta{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav-ext a.cta:hover{background:var(--accent2);border-color:var(--accent2)}
+
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--text2);transition:all .3s}
+
+.mob-menu{
+  display:none;flex-direction:column;
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:1.5rem 2rem;gap:1.25rem;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.mob-menu a:hover{color:var(--accent)}
+
+main{padding-top:64px}
+
+/* ── ABOUT HERO ── */
+#about{
+  max-width:1200px;margin:0 auto;
+  padding:5rem 2.5rem 4rem;
+  display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start;
+}
+@media(max-width:900px){#about{grid-template-columns:1fr;gap:2rem}}
+
+.about-left .tag{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--accent);letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
+}
+.about-left .tag::before{content:'';display:block;width:36px;height:1px;background:var(--accent)}
+
+.about-left h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  font-weight:300;font-style:italic;
+  line-height:1;letter-spacing:.04em;
+  color:#c8d8ee;margin-bottom:.35rem;
+}
+.about-left h1 strong{
+  display:block;
+  font-style:normal;font-weight:600;
+  font-size:.85em;letter-spacing:.08em;
+  color:var(--text);
+}
+
+.about-left .role{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  color:var(--text2);letter-spacing:.1em;margin-bottom:2rem;
+}
+
+.about-left .bio{
+  font-size:.975rem;color:var(--text2);line-height:1.85;
+  max-width:600px;margin-bottom:2.5rem;
+}
+.about-left .bio strong{color:var(--text);font-weight:600}
+
+.about-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.about-links a{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.62rem 1.35rem;text-decoration:none;
+  border:1px solid var(--border2);color:var(--text2);
+  border-radius:2px;transition:all .25s;
+}
+.about-links a:hover{border-color:var(--accent);color:var(--accent)}
+.about-links .a-primary{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;border-color:transparent;
+  box-shadow:0 4px 20px rgba(124,111,255,.3);
+}
+.about-links .a-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,111,255,.4)}
+
+/* Right info card */
+.info-card{background:var(--surface);border:1px solid var(--border);overflow:hidden}
+.info-card-top{
+  background:linear-gradient(135deg,rgba(124,111,255,.15),rgba(167,139,250,.05));
+  border-bottom:1px solid var(--border);
+  padding:1.5rem;display:flex;align-items:center;gap:.85rem;
+}
+.info-avatar{
+  width:54px;height:54px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:#fff;
+}
+.info-n{font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;color:var(--text)}
+.info-r{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--accent);margin-top:.2rem;letter-spacing:.05em}
+.info-rows{padding:0 1.25rem}
+.info-row{display:flex;align-items:flex-start;gap:.75rem;padding:.8rem 0;border-bottom:1px solid var(--border)}
+.info-row:last-child{border-bottom:none}
+.info-ico{width:30px;height:30px;flex-shrink:0;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;border-radius:3px;margin-top:.1rem}
+.info-lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.15rem}
+.info-val{font-size:.82rem;color:var(--text)}
+.info-val a{color:var(--accent);text-decoration:none}
+.info-val a:hover{text-decoration:underline}
+.avail{
+  margin:1.25rem;padding:.8rem 1rem;
+  background:rgba(6,214,160,.06);border:1px solid rgba(6,214,160,.25);
+  border-radius:3px;display:flex;align-items:center;gap:.6rem;
+}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--c3);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,.5)}50%{box-shadow:0 0 0 6px rgba(6,214,160,0)}}
+.avail span{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--c3);letter-spacing:.04em}
+
+/* ── SECTION SHARED ── */
+.sec{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
+.sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:3.5rem;border-bottom:1px solid var(--border);padding-bottom:1.5rem}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.12em}
+.sec-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--text)}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.edu-card{
+  background:var(--bg);padding:2.25rem 2rem;transition:background .2s;
+  position:relative;overflow:hidden;
+}
+.edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;transform:scaleY(0);transform-origin:top;transition:transform .4s}
+.edu-card:nth-child(1)::before{background:var(--accent)}
+.edu-card:nth-child(2)::before{background:var(--c4)}
+.edu-card:hover{background:var(--surface)}
+.edu-card:hover::before{transform:scaleY(1)}
+.edu-badge{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;padding:.28rem .72rem;margin-bottom:1.1rem;display:inline-block;border-radius:100px}
+.edu-badge.complete{background:rgba(6,214,160,.08);color:var(--c3);border:1px solid rgba(6,214,160,.25)}
+.edu-degree{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:.3rem}
+.edu-school{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--accent);margin-bottom:.3rem}
+.edu-loc{font-size:.8rem;color:var(--text2);margin-bottom:.2rem}
+.edu-dates{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.05em}
+
+/* ── EXPERIENCE ── */
+.exp-layout{display:flex;flex-direction:column}
+@media(min-width:768px){.exp-layout{flex-direction:row}}
+
+.exp-tabs{
+  display:flex;flex-direction:row;overflow-x:auto;
+  border-bottom:1px solid var(--border);scrollbar-width:none;
+}
+@media(min-width:768px){
+  .exp-tabs{flex-direction:column;min-width:210px;border-bottom:none;border-right:1px solid var(--border);overflow-x:visible}
+}
+.exp-tab{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  padding:1rem 1.25rem;color:var(--text2);background:transparent;
+  border:none;cursor:pointer;text-align:left;letter-spacing:.06em;
+  transition:all .2s;border-bottom:2px solid transparent;white-space:nowrap;
+}
+@media(min-width:768px){
+  .exp-tab{border-bottom:none;border-left:2px solid transparent;white-space:normal;padding:1.2rem 1.4rem}
+}
+.exp-tab:hover{color:var(--text);background:var(--surface)}
+.exp-tab.active{color:var(--accent);border-bottom-color:var(--accent);background:var(--surface)}
+@media(min-width:768px){.exp-tab.active{border-bottom-color:transparent;border-left-color:var(--accent)}}
+.exp-tab .co{display:block;font-size:.65rem;color:var(--muted);margin-top:.2rem}
+
+.exp-panel{flex:1;display:none}
+.exp-panel.active{display:block}
+@media(min-width:768px){.exp-panel{padding-left:2.5rem}}
+
+.exp-role{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:.3rem}
+.exp-company{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);margin-bottom:.25rem}
+.exp-meta{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.06em;margin-bottom:1.5rem}
+.exp-div{width:36px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));margin-bottom:1.5rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+.exp-bullets li{font-size:.93rem;color:var(--text2);line-height:1.72;padding-left:1.6rem;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;top:.35rem;color:var(--accent);font-size:.62rem}
+.exp-bullets li strong{color:var(--text);font-weight:600}
+
+/* ── SKILLS GRID ── */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1px;background:var(--border);border:1px solid var(--border);
+}
+.skill-cat{
+  background:var(--bg);padding:1.75rem;
+  transition:background .2s;position:relative;overflow:hidden;
+}
+.skill-cat::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.skill-cat:hover{background:var(--surface)}
+.skill-cat:hover::before{transform:scaleX(1)}
+.skill-cat:nth-child(1)::before{background:var(--c1)}
+.skill-cat:nth-child(2)::before{background:var(--c2)}
+.skill-cat:nth-child(3)::before{background:var(--c3)}
+.skill-cat:nth-child(4)::before{background:var(--c4)}
+.skill-cat:nth-child(5)::before{background:var(--c5)}
+.skill-cat:nth-child(6)::before{background:var(--c6)}
+
+.skill-cat-title{
+  font-family:'JetBrains Mono',monospace;font-size:.67rem;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.skill-cat:nth-child(1) .skill-cat-title{color:var(--c1)}
+.skill-cat:nth-child(2) .skill-cat-title{color:var(--c2)}
+.skill-cat:nth-child(3) .skill-cat-title{color:var(--c3)}
+.skill-cat:nth-child(4) .skill-cat-title{color:var(--c4)}
+.skill-cat:nth-child(5) .skill-cat-title{color:var(--c5)}
+.skill-cat:nth-child(6) .skill-cat-title{color:var(--c6)}
+
+.skill-cat-title::before{content:'';display:block;width:16px;height:1px;background:currentColor;opacity:.5}
+
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.stag{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  letter-spacing:.03em;padding:.25rem .65rem;
+  background:var(--bg2);border:1px solid var(--border2);
+  color:var(--muted);border-radius:3px;transition:all .2s;cursor:default;
+}
+.skill-cat:hover .stag{color:var(--text2);border-color:var(--border2)}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+
+.proj-card{
+  background:var(--surface);border:1px solid var(--border);
+  padding:2rem;position:relative;overflow:hidden;
+  transition:transform .3s,border-color .3s;
+  border-radius:2px;
+}
+.proj-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform .45s;
+}
+.proj-card:nth-child(1)::before{background:linear-gradient(90deg,var(--c2),var(--c6))}
+.proj-card:nth-child(2)::before{background:linear-gradient(90deg,var(--c1),var(--c4))}
+.proj-card:hover{transform:translateY(-4px);border-color:var(--border2)}
+.proj-card:hover::before{transform:scaleX(1)}
+
+.proj-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem}
+.proj-ico{width:48px;height:48px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.35rem;border-radius:4px}
+.proj-btn{
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.05em;
+  padding:.28rem .65rem;border:1px solid var(--border2);color:var(--muted);
+  text-decoration:none;transition:all .2s;border-radius:2px;
+}
+.proj-btn:hover{color:var(--accent);border-color:rgba(124,111,255,.4)}
+
+.proj-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text);margin-bottom:.2rem}
+.proj-sub{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.05em;margin-bottom:1rem}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem}
+.proj-bullets li{font-size:.88rem;color:var(--text2);line-height:1.65;padding-left:1.2rem;position:relative}
+.proj-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.72rem;top:.1rem}
+
+.proj-tags{display:flex;flex-wrap:wrap;gap:.38rem}
+.ptag{
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;
+  letter-spacing:.03em;padding:.22rem .6rem;
+  border:1px solid var(--border2);color:var(--muted);
+  border-radius:3px;transition:all .2s;
+}
+.proj-card:nth-child(1):hover .ptag{border-color:rgba(124,111,255,.25);color:var(--text2)}
+.proj-card:nth-child(2):hover .ptag{border-color:rgba(255,107,107,.25);color:var(--text2)}
+
+.proj-more{
+  margin-top:2rem;
+  border:1px dashed var(--border2);
+  padding:2rem;text-align:center;
+  border-radius:2px;
+  transition:border-color .2s,background .2s;
+}
+.proj-more:hover{border-color:rgba(124,111,255,.4);background:var(--surface)}
+.proj-more a{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+}
+.proj-more p{font-size:.82rem;color:var(--muted);margin-top:.4rem}
+
+/* ── CERTIFICATIONS ── */
+.cert-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1px;background:var(--border);border:1px solid var(--border);
+  margin-bottom:2.5rem;
+}
+.cert-card{
+  background:var(--bg);padding:1.5rem;
+  display:flex;align-items:flex-start;gap:.85rem;
+  transition:background .2s;
+}
+.cert-card:hover{background:var(--surface)}
+.cert-ico{
+  width:40px;height:40px;flex-shrink:0;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;border-radius:4px;
+}
+.cert-name{font-family:'Outfit',sans-serif;font-weight:600;font-size:.87rem;color:var(--text);line-height:1.4;margin-bottom:.22rem}
+.cert-date{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);letter-spacing:.05em}
+
+.awards-head{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--text2);letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;
+}
+.awards-head::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.award-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid;padding:1.4rem 1.5rem;
+  display:flex;align-items:flex-start;gap:1.1rem;
+  margin-bottom:.75rem;transition:background .2s;
+}
+.award-card:hover{background:var(--surface2)}
+.award-card:nth-child(1){border-left-color:var(--c4)}
+.award-card:nth-child(2){border-left-color:var(--c3)}
+.award-card:nth-child(3){border-left-color:var(--c2)}
+.award-rank{
+  font-family:'Cormorant Garamond',serif;font-size:1.8rem;
+  font-weight:600;line-height:1;flex-shrink:0;width:48px;text-align:center;
+}
+.award-card:nth-child(1) .award-rank{color:var(--c4)}
+.award-card:nth-child(2) .award-rank{color:var(--c3);font-size:1rem;padding-top:.5rem;font-family:'JetBrains Mono',monospace}
+.award-card:nth-child(3) .award-rank{color:var(--c2);font-size:1rem;padding-top:.5rem;font-family:'JetBrains Mono',monospace}
+.award-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:.93rem;color:var(--text);margin-bottom:.3rem}
+.award-desc{font-size:.84rem;color:var(--text2);line-height:1.6}
+
+/* ── CONTACT ── */
+#contact{background:var(--surface);border-top:1px solid var(--border)}
+.contact-inner{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
+
+.contact-left h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  font-weight:300;font-style:italic;
+  color:var(--text);line-height:1.1;margin-bottom:1.25rem;
+}
+.contact-left h2 strong{
+  font-style:normal;font-weight:600;
+  background:linear-gradient(135deg,var(--accent),var(--c3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.contact-left p{font-size:.95rem;color:var(--text2);line-height:1.8;margin-bottom:2rem}
+
+.contact-links{display:flex;flex-direction:column;gap:.65rem}
+.clink{
+  display:flex;align-items:center;gap:.85rem;
+  text-decoration:none;padding:.9rem 1.1rem;
+  background:var(--bg2);border:1px solid var(--border);
+  transition:all .2s;border-radius:2px;
+}
+.clink:hover{border-color:rgba(124,111,255,.4);background:var(--surface2)}
+.clink-ico{
+  width:36px;height:36px;flex-shrink:0;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;border-radius:3px;
+  transition:border-color .2s;
+}
+.clink:hover .clink-ico{border-color:rgba(124,111,255,.4)}
+.clink-lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.15rem}
+.clink-val{font-size:.84rem;color:var(--text);transition:color .2s}
+.clink:hover .clink-val{color:var(--accent)}
+
+/* Form */
+.contact-form{display:flex;flex-direction:column;gap:.9rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.38rem}
+.field label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text2);letter-spacing:.1em;text-transform:uppercase}
+.field input,.field textarea{
+  background:var(--bg2);border:1px solid var(--border2);
+  color:var(--text);font-family:'Outfit',sans-serif;font-size:.9rem;
+  padding:.72rem 1rem;outline:none;transition:border-color .2s,box-shadow .2s;
+  resize:vertical;border-radius:2px;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(124,111,255,.08)}
+.field textarea{min-height:105px}
+.form-btn{
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:.88rem 2rem;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;font-weight:600;border:none;cursor:pointer;
+  transition:all .2s;align-self:flex-start;border-radius:2px;
+  box-shadow:0 4px 20px rgba(124,111,255,.3);
+}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,111,255,.4)}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);padding:2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--muted);flex-wrap:wrap;gap:1rem;
+}
+footer a{color:var(--text2);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--accent)}
+
+/* ── REVEAL ── */
+.sr{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.sr.in{opacity:1;transform:none}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:0 1.5rem}
+  .nav-links,.nav-ext{display:none}
+  .ham{display:flex}
+  .sec{padding:4rem 1.5rem}
+  .proj-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div id="cd"></div>
+<div id="cr"></div>
+
+<div class="wrap">
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-icon">KJ</div>
+    <div>
+      <div class="nav-brand-name">Krutika Jagdale</div>
+      <div class="nav-brand-sub">Security Engineer</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-ext">
+    <a href="https://github.com/Kruti3101" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank">LinkedIn</a>
+    <a href="index.html" class="cta">← Home</a>
+  </div>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="#about" onclick="cm()">About</a>
+  <a href="#education" onclick="cm()">Education</a>
+  <a href="#experience" onclick="cm()">Experience</a>
+  <a href="#skills" onclick="cm()">Skills</a>
+  <a href="#projects" onclick="cm()">Projects</a>
+  <a href="#certifications" onclick="cm()">Certifications</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+  <a href="index.html">← Home</a>
+</div>
+
+<main>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left sr">
+    <div class="tag">Security Engineer · Denver, CO</div>
+    <h1>Krutika<strong>Jagdale</strong></h1>
+    <div class="role">Detection Engineering · Red Teaming · Cloud Security</div>
+    <p class="bio">
+      Three years at IBM running detection engineering across 20+ enterprise SOCs — writing rules, fixing SIEM pipelines, and keeping security platforms running for clients who couldn't afford them going down. Now at CU Denver with a completed master's in cybersecurity, building AI-native security tools and red teaming LLM systems. I care about detection that's actually precise, automation that saves analysts real time, and security problems that don't have obvious answers yet.
+    </p>
+    <div class="about-links">
+      <a href="mailto:krutikarajeshjagdale@gmail.com" class="a-primary">Get in Touch</a>
+      <a href="https://github.com/Kruti3101" target="_blank">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="sr" style="transition-delay:.2s">
+    <div class="info-card">
+      <div class="info-card-top">
+        <div class="info-avatar">KJ</div>
+        <div>
+          <div class="info-n">Krutika Jagdale</div>
+          <div class="info-r">Security Engineer · Detection & AI</div>
+        </div>
+      </div>
+      <div class="info-rows">
+        <div class="info-row">
+          <div class="info-ico">📍</div>
+          <div><div class="info-lbl">Location</div><div class="info-val">Denver, Colorado</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">🎓</div>
+          <div><div class="info-lbl">Education</div><div class="info-val">M.S. Cybersecurity<br><span style="color:var(--text2);font-size:.78rem">University of Colorado Denver</span></div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">📧</div>
+          <div><div class="info-lbl">Email</div><div class="info-val"><a href="mailto:krutikarajeshjagdale@gmail.com">krutikarajeshjagdale@gmail.com</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">💼</div>
+          <div><div class="info-lbl">LinkedIn</div><div class="info-val"><a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank">in/krutikajagdale ↗</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">🐙</div>
+          <div><div class="info-lbl">GitHub</div><div class="info-val"><a href="https://github.com/Kruti3101" target="_blank">Kruti3101 ↗</a></div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico">🏆</div>
+          <div><div class="info-lbl">Top Award</div><div class="info-val">#1 ISACA Denver 2026<br><span style="color:var(--text2);font-size:.78rem">AI Threat Vector Modeling</span></div></div>
+        </div>
+      </div>
+      <div class="avail">
+        <span class="avail-dot"></span>
+        <span>Open to Full-Time Security Engineering Roles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec">
+  <div class="sec-head sr">
+    <span class="sec-num">// 01</span>
+    <h2 class="sec-title">Education</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="edu-grid sr">
+    <div class="edu-card">
+      <span class="edu-badge complete">Completed</span>
+      <div class="edu-degree">M.S. in Information Systems (Cybersecurity)</div>
+      <div class="edu-school">University of Colorado Denver</div>
+      <div class="edu-loc">Denver, Colorado</div>
+      <div class="edu-dates">Aug 2024 – May 2026</div>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge complete">Completed</span>
+      <div class="edu-degree">B.Tech. in Computer Science</div>
+      <div class="edu-school">Deogiri Institute of Engineering and Management Studies</div>
+      <div class="edu-loc">India</div>
+      <div class="edu-dates">Aug 2017 – May 2021</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="sec-head sr">
+    <span class="sec-num">// 02</span>
+    <h2 class="sec-title">Work Experience</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="exp-layout sr">
+    <div class="exp-tabs" role="tablist">
+      <button class="exp-tab active" onclick="tab('ibm',this)">IBM<span class="co">Security Engineer</span></button>
+      <button class="exp-tab" onclick="tab('ucd',this)">UC Denver<span class="co">IT Associate</span></button>
+      <button class="exp-tab" onclick="tab('d4g',this)">Digital4Good<span class="co">Cybersecurity Intern</span></button>
+      <button class="exp-tab" onclick="tab('vol',this)">Volunteer<span class="co">Club President</span></button>
+    </div>
+
+    <div id="p-ibm" class="exp-panel active">
+      <div class="exp-role">Security Engineer — SIEM & Detection Engineering</div>
+      <div class="exp-company">IBM · Pune, India</div>
+      <div class="exp-meta">Aug 2021 – Aug 2024 · Full-time · 3 years</div>
+      <div class="exp-div"></div>
+      <ul class="exp-bullets">
+        <li>Led security monitoring for <strong>20+ enterprise SOC environments</strong> across on-prem, VMware, and AWS QRadar deployments processing <strong>10K–50K EPS</strong>, resolving 1,000+ incidents annually and reducing MTTR by <strong>35%</strong>.</li>
+        <li>Resolved critical QRadar core service failures (ecs-ecs-ingress, ecs-ec, HostContext, Tomcat), restoring <strong>multi-terabyte daily log ingestion pipelines</strong> and maintaining <strong>99.99% SIEM availability</strong>.</li>
+        <li>Stabilized QVM, QRM, and QNI modules, enabling remediation of <strong>80%+ high/critical vulnerabilities</strong> within SLA and reducing false positives by <strong>45%</strong>.</li>
+        <li>Leveraged deep knowledge of <strong>MITRE ATT&CK TTPs</strong> to simulate adversarial behavior, identifying gaps in detection logic and providing engineering-level guidance on bypassing legacy security controls.</li>
+        <li>Executed large-scale log onboarding by integrating <strong>150+ standard and custom log sources</strong>, resolving parsing, normalization, and ingestion issues to enhance security visibility.</li>
+        <li>Conducted deep-dive security investigations using log correlation and offense analysis, validating threats and escalating confirmed incidents in alignment with <strong>SOC playbooks and SLAs</strong>.</li>
+        <li>Acted as primary technical contact for <strong>4–5 enterprise customers daily</strong>, achieving 95% SLA compliance while improving detection accuracy, platform reliability, and response efficiency.</li>
+      </ul>
+    </div>
+
+    <div id="p-ucd" class="exp-panel">
+      <div class="exp-role">IT Associate — Identity & Infrastructure Security</div>
+      <div class="exp-company">College of Liberal Arts and Sciences, University of Colorado Denver · Denver, CO</div>
+      <div class="exp-meta">Mar 2025 – Dec 2025 · Part-time</div>
+      <div class="exp-div"></div>
+      <ul class="exp-bullets">
+        <li>Delivered technical support across <strong>23 departments</strong>, achieving 95% SLA compliance and improving overall service efficiency.</li>
+        <li>Resolved <strong>150+ hardware, software, and network tickets monthly</strong>, reducing user downtime and improving IT availability.</li>
+        <li>Managed user provisioning, access control, and system administration for <strong>500+ users</strong> across Windows and cloud environments.</li>
+        <li>Executed <strong>lateral movement and privilege escalation simulations</strong> within Active Directory environments, utilizing GPOs and RBAC misconfigurations to identify potential breach points.</li>
+        <li>Improved IT infrastructure workflows by <strong>70%</strong> through Python/PowerShell automation and cross-functional collaboration.</li>
+      </ul>
+    </div>
+
+    <div id="p-d4g" class="exp-panel">
+      <div class="exp-role">Cybersecurity & IT Security Intern</div>
+      <div class="exp-company">Digital4Good + #ICANHELP · Remote, CA</div>
+      <div class="exp-meta">Aug 2025 – Present · Internship</div>
+      <div class="exp-div"></div>
+      <ul class="exp-bullets">
+        <li>Strengthened data privacy policies and access controls, closing compliance gaps and <strong>reducing unauthorized access risks by 80%</strong>.</li>
+        <li>Exploited <strong>AWS IAM and security group misconfigurations</strong> to discover vulnerabilities and assess production cloud service resilience.</li>
+        <li>Performed quarterly backup validation and updated <strong>BC/DR documentation</strong> to strengthen recovery readiness.</li>
+        <li>Provisioned <strong>50+ RBAC-based accounts</strong>, reducing onboarding time by 35% while enforcing least-privilege access.</li>
+        <li>Identified <strong>100+ vulnerabilities</strong> through security assessments, contributing to a 25% reduction in medium-risk exposure.</li>
+      </ul>
+    </div>
+
+    <div id="p-vol" class="exp-panel">
+      <div class="exp-role">President, Transamerica Cybersecurity Student Club</div>
+      <div class="exp-company">University of Colorado Denver · Denver, CO</div>
+      <div class="exp-meta">Volunteer Leadership</div>
+      <div class="exp-div"></div>
+      <ul class="exp-bullets">
+        <li>Led and managed a <strong>450+ member cybersecurity student club</strong>, overseeing operations, member engagement, and strategic direction.</li>
+        <li>Organized <strong>technical workshops</strong> on threat detection, penetration testing, and cloud security for students at all skill levels.</li>
+        <li>Facilitated <strong>industry networking events</strong>, connecting students with cybersecurity professionals and recruiters across the Denver tech community.</li>
+        <li>Drove club growth and community engagement, fostering an environment for students to build hands-on security skills and real professional connections.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="sec-head sr">
+    <span class="sec-num">// 03</span>
+    <h2 class="sec-title">Skills & Expertise</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="skills-grid sr">
+    <div class="skill-cat">
+      <div class="skill-cat-title">Detection & Signals</div>
+      <div class="skill-tags">
+        <span class="stag">MITRE ATT&CK TTP Mapping</span><span class="stag">Sigma Rules</span><span class="stag">YARA Rules</span><span class="stag">Threat Hunting</span><span class="stag">Custom Correlation Rules</span><span class="stag">IOC/TTP Use Cases</span><span class="stag">EDR/XDR</span><span class="stag">CrowdStrike</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">SIEM & Monitoring</div>
+      <div class="skill-tags">
+        <span class="stag">IBM QRadar (Certified)</span><span class="stag">Splunk</span><span class="stag">Azure Sentinel</span><span class="stag">AWS GuardDuty</span><span class="stag">Wireshark</span><span class="stag">IDS/IPS</span><span class="stag">Digital Forensics</span><span class="stag">PCAP Analysis</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Cloud & Infrastructure</div>
+      <div class="skill-tags">
+        <span class="stag">AWS (IAM, CloudTrail, GuardDuty)</span><span class="stag">Azure Defender</span><span class="stag">GCP Security</span><span class="stag">Wiz (CSPM)</span><span class="stag">Docker</span><span class="stag">Kubernetes</span><span class="stag">Terraform</span><span class="stag">Palo Alto</span><span class="stag">Cisco ASA</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Automation & AI Security</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span><span class="stag">Bash</span><span class="stag">PowerShell</span><span class="stag">Ansible</span><span class="stag">CI/CD Integration</span><span class="stag">Red Teaming</span><span class="stag">Prompt Injection Testing</span><span class="stag">Agentic Framework Security</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Vulnerability & AppSec</div>
+      <div class="skill-tags">
+        <span class="stag">Nessus / Tenable</span><span class="stag">Semgrep</span><span class="stag">Checkmarx</span><span class="stag">Snyk (SCA)</span><span class="stag">Nmap</span><span class="stag">Metasploit</span><span class="stag">Burp Suite</span><span class="stag">OWASP Top 10</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-title">Identity & Compliance</div>
+      <div class="skill-tags">
+        <span class="stag">Active Directory</span><span class="stag">Entra ID</span><span class="stag">AWS/Azure IAM</span><span class="stag">RBAC/ABAC</span><span class="stag">PAM</span><span class="stag">Zero Trust</span><span class="stag">NIST CSF</span><span class="stag">ISO 27001</span><span class="stag">SOC 2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="sec-head sr">
+    <span class="sec-num">// 04</span>
+    <h2 class="sec-title">Featured Projects</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card sr">
+      <div class="proj-head">
+        <div class="proj-ico">🔷</div>
+        <a href="https://github.com/Kruti3101" target="_blank" class="proj-btn">GitHub ↗</a>
+      </div>
+      <div class="proj-name">Sapphire Sentinel</div>
+      <div class="proj-sub">Secure AI Agentic Framework · Feb 2026 – Present</div>
+      <ul class="proj-bullets">
+        <li>Developed a <strong style="color:var(--text)">Confidential Computing framework</strong> ensuring end-to-end data privacy for automated financial transactions.</li>
+        <li>Engineered a <strong style="color:var(--text)">Red-Team Matrix</strong> validating resilience against Prompt Injection and resource exhaustion attacks.</li>
+        <li>Implemented Runtime Protection with replay attack defenses and custom protocol simulations for access control.</li>
+      </ul>
+      <div class="proj-tags">
+        <span class="ptag">Confidential Computing</span><span class="ptag">Red Teaming</span><span class="ptag">Python</span><span class="ptag">Prompt Injection</span><span class="ptag">Agentic Security</span>
+      </div>
+    </div>
+
+    <div class="proj-card sr" style="transition-delay:.12s">
+      <div class="proj-head">
+        <div class="proj-ico">⚡</div>
+        <a href="https://github.com/Kruti3101" target="_blank" class="proj-btn">GitHub ↗</a>
+      </div>
+      <div class="proj-name">ThreatSight</div>
+      <div class="proj-sub">LLM-Powered Detection Engineering Toolkit · Jan 2026 – Present</div>
+      <ul class="proj-bullets">
+        <li>Built a <strong style="color:var(--text)">Python-based LLM agent</strong> to auto-generate MITRE ATT&CK-mapped Sigma rules from threat intel feeds.</li>
+        <li>Reduced manual detection rule authoring time by <strong style="color:var(--text)">60%</strong> using LLM-driven signal development automation.</li>
+        <li>Integrated threat hunting workflows with cloud log sources; validated rules against endpoint and network data.</li>
+      </ul>
+      <div class="proj-tags">
+        <span class="ptag">Python</span><span class="ptag">LLM Agents</span><span class="ptag">MITRE ATT&CK</span><span class="ptag">Sigma Rules</span><span class="ptag">Threat Intel</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="proj-more sr">
+    <a href="https://github.com/Kruti3101" target="_blank">View All Projects on GitHub ↗</a>
+    <p>More detection tools, automation scripts, and security research on GitHub</p>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec">
+  <div class="sec-head sr">
+    <span class="sec-num">// 05</span>
+    <h2 class="sec-title">Certifications & Awards</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="cert-grid sr">
+    <div class="cert-card">
+      <div class="cert-ico">🛡️</div>
+      <div><div class="cert-name">CompTIA Security+</div><div class="cert-date">Dec 2025</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">☁️</div>
+      <div><div class="cert-name">AWS Certified Solutions Architect Associate</div><div class="cert-date">Feb 2024</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🌐</div>
+      <div><div class="cert-name">CCNA — Cisco Certified Network Associate</div><div class="cert-date">Sept 2025</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🔍</div>
+      <div><div class="cert-name">IBM QRadar Deployment 7.5 Certified</div><div class="cert-date">Nov 2024</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🔒</div>
+      <div><div class="cert-name">CompTIA Network+</div><div class="cert-date">July 2025</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🐧</div>
+      <div><div class="cert-name">Red Hat Certified System Administrator (RHCSA)</div><div class="cert-date">Dec 2019</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🔎</div>
+      <div><div class="cert-name">IBM Certified Analyst — Security QRadar SIEM V7.4.3</div><div class="cert-date">IBM</div></div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-ico">🏗️</div>
+      <div><div class="cert-name">IBM Cloud Pak for Security — Security Engineer</div><div class="cert-date">IBM</div></div>
+    </div>
+  </div>
+
+  <div class="sr">
+    <div class="awards-head">Awards & Competitions</div>
+    <div class="award-card">
+      <div class="award-rank">#1</div>
+      <div>
+        <div class="award-name">ISACA Denver Case Study Competition — 2026</div>
+        <div class="award-desc">First place in AI Threat Vector Modeling. Built a security framework addressing deepfake threats and AI-driven attack risks with end-to-end threat modeling and mitigation strategies.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-rank">CTF</div>
+      <div>
+        <div class="award-name">MWCC Cybersecurity CTF</div>
+        <div class="award-desc">Penetration testing on web and network apps, digital forensics on file systems and memory dumps, OSINT collection and threat analysis under competitive conditions.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-rank">CyDef</div>
+      <div>
+        <div class="award-name">RMCCDC Cyber Defense Competition</div>
+        <div class="award-desc">Live-fire Red Team/Blue Team engagements — monitoring logs, hunting active threats, and mitigating real-time cyberattacks on production-like infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sec-head sr">
+      <span class="sec-num">// 06</span>
+      <h2 class="sec-title">Get in Touch</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="sr">
+        <div class="contact-left">
+          <h2>Let's talk <strong>security.</strong></h2>
+          <p>Looking for security engineering roles where the problems are real — detection, AI security, cloud defense. Open to relocate anywhere in the US, hybrid or remote. If you're working on something hard, I'd like to hear about it.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:krutikarajeshjagdale@gmail.com" class="clink">
+            <div class="clink-ico">📧</div>
+            <div><div class="clink-lbl">Email</div><div class="clink-val">krutikarajeshjagdale@gmail.com</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank" class="clink">
+            <div class="clink-ico">💼</div>
+            <div><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/krutikajagdale ↗</div></div>
+          </a>
+          <a href="https://github.com/Kruti3101" target="_blank" class="clink">
+            <div class="clink-ico">🐙</div>
+            <div><div class="clink-lbl">GitHub</div><div class="clink-val">github.com/Kruti3101 ↗</div></div>
+          </a>
+          <div class="clink" style="cursor:default">
+            <div class="clink-ico">📍</div>
+            <div><div class="clink-lbl">Location</div><div class="clink-val">Denver, Colorado</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sr" style="transition-delay:.2s">
+        <form class="contact-form" onsubmit="sendMail(event)">
+          <div class="form-row">
+            <div class="field"><label>Name *</label><input type="text" name="name" placeholder="Your name" required/></div>
+            <div class="field"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required/></div>
+          </div>
+          <div class="field"><label>Subject</label><input type="text" name="subject" placeholder="What's this about?"/></div>
+          <div class="field"><label>Message *</label><textarea name="message" placeholder="Your message..." required></textarea></div>
+          <button type="submit" class="form-btn" id="fb">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 Krutika Jagdale · Security Engineer · Denver, CO</div>
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+    <a href="mailto:krutikarajeshjagdale@gmail.com">Email</a>
+    <a href="https://github.com/Kruti3101" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank">LinkedIn</a>
+    <a href="index.html">← Home</a>
+  </div>
+</footer>
+</div>
+
+<script>
+// Cursor
+const cd=document.getElementById('cd'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx+'px';cd.style.top=my+'px'});
+(function l(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(l)})();
+document.querySelectorAll('a,button,input,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cr.style.width='52px';cr.style.height='52px';cr.style.borderColor='var(--accent)'});
+  el.addEventListener('mouseleave',()=>{cr.style.width='34px';cr.style.height='34px';cr.style.borderColor='rgba(124,111,255,0.45)'});
+});
+
+// Mobile menu
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>mob.classList.toggle('open'));
+function cm(){mob.classList.remove('open')}
+
+// Tabs
+function tab(id,btn){
+  document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('p-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.08});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+
+// Active nav
+const secs=document.querySelectorAll('section[id],div[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-90)cur=s.id});
+  navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+// Form
+function sendMail(e){
+  e.preventDefault();
+  const f=e.target,btn=document.getElementById('fb');
+  window.location.href=`mailto:krutikarajeshjagdale@gmail.com?subject=${encodeURIComponent(f.subject.value||'Portfolio Enquiry')}&body=${encodeURIComponent('Name: '+f.name.value+'\nEmail: '+f.email.value+'\n\n'+f.message.value)}`;
+  btn.textContent='Opening Mail Client...';
+  setTimeout(()=>btn.textContent='Send Message →',2000);
+}
+</script>
+</body>
+</html>
