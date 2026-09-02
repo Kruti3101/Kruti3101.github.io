@@ -500,87 +500,8 @@ body::after{
 }
 .ab-link.primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,111,255,.4)}
 
-.bring-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);margin-top:2.5rem;
-}
-.bring-card{
-  background:var(--bg);padding:1.4rem 1.5rem;
-  transition:background .2s;
-}
-.bring-card:hover{background:var(--surface)}
-.bring-ico{font-size:1.1rem;margin-bottom:.5rem}
-.bring-t{
-  font-family:'JetBrains Mono',monospace;font-size:.66rem;
-  letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;
-}
-.bring-card:nth-child(1) .bring-t{color:var(--c1)}
-.bring-card:nth-child(2) .bring-t{color:var(--c2)}
-.bring-card:nth-child(3) .bring-t{color:var(--c3)}
-.bring-card:nth-child(4) .bring-t{color:var(--c6)}
-.bring-d{font-size:.82rem;color:var(--text2);line-height:1.6}
-
-/* Right card */
-.info-card{
-  background:var(--surface);
-  border:1px solid var(--border);overflow:hidden;
-}
-.info-card-top{
-  background:linear-gradient(135deg,rgba(124,111,255,.15),rgba(167,139,250,.08));
-  border-bottom:1px solid var(--border);
-  padding:1.75rem;
-  display:flex;align-items:center;gap:1rem;
-}
-.info-avatar{
-  width:60px;height:60px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Outfit',sans-serif;font-weight:700;
-  font-size:1.1rem;color:#fff;letter-spacing:.03em;
-}
-.info-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--text)}
-.info-role{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--accent);margin-top:.2rem;letter-spacing:.05em}
-
-.info-rows{padding:0 1.5rem}
-.info-row{
-  display:flex;align-items:flex-start;gap:.85rem;
-  padding:.9rem 0;border-bottom:1px solid var(--border);
-}
-.info-row:last-child{border-bottom:none}
-.info-ico-box{
-  width:32px;height:32px;flex-shrink:0;
-  background:var(--bg2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.82rem;border-radius:4px;
-}
-.info-lbl{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
-.info-val{font-size:.84rem;color:var(--text)}
-.info-val a{color:var(--accent);text-decoration:none}
-.info-val a:hover{text-decoration:underline}
-
-.avail{
-  margin:1.5rem;
-  padding:.85rem 1rem;
-  background:rgba(6,214,160,.06);
-  border:1px solid rgba(6,214,160,.25);
-  border-radius:4px;
-  display:flex;align-items:center;gap:.65rem;
-}
-.avail-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--c3);flex-shrink:0;
-  animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(6,214,160,.5)}
-  50%{box-shadow:0 0 0 6px rgba(6,214,160,0)}
-}
-.avail span{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--c3);letter-spacing:.05em}
-
 /* Timeline */
 .tl-wrap{
-  margin-top:1.5rem;
   border:1px solid var(--border);overflow:hidden;
 }
 .tl-hdr{
@@ -662,7 +583,6 @@ footer a:hover{color:var(--accent)}
   .pill{font-size:.6rem;padding:.38rem .8rem}
   .bottom-cta{padding:5rem 1.5rem}
   footer{flex-direction:column;text-align:center}
-  .bring-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -889,29 +809,6 @@ footer a:hover{color:var(--accent)}
       <p>Now I'm pushing into AI and supply-chain security — areas most teams are still figuring out. I built <strong>SupplyX</strong> to inventory dependencies, correlate them against OSV, and statically scan MCP servers for filesystem, shell, network, and credential capabilities. I built <strong>ThreatSight</strong> to auto-generate MITRE-mapped Sigma rules using LLM agents. I backed both with <strong>Black Hat USA 2026</strong> training in AI agent security and AI-driven application security. None of it was assigned. All of it came from watching a gap and deciding to fill it.</p>
       <p>Outside of work I run the <strong>Transamerica Cybersecurity Student Club</strong> at CU Denver — 450+ members, hands-on workshops, real industry connections.</p>
 
-      <div class="bring-grid">
-        <div class="bring-card">
-          <div class="bring-ico">⚡</div>
-          <div class="bring-t">Detection Engineering</div>
-          <div class="bring-d">40+ ATT&CK-mapped rules. 20+ enterprise SOCs. Tuned, validated, running at 99.99% uptime.</div>
-        </div>
-        <div class="bring-card">
-          <div class="bring-ico">🤖</div>
-          <div class="bring-t">AI Security</div>
-          <div class="bring-d">Red teaming LLMs and building AI-native tools while most teams are writing their first AI policy.</div>
-        </div>
-        <div class="bring-card">
-          <div class="bring-ico">🐍</div>
-          <div class="bring-t">Security Automation</div>
-          <div class="bring-d">Workflows 70% faster. Rule authoring cut 60%. Code that makes analysts' lives better.</div>
-        </div>
-        <div class="bring-card">
-          <div class="bring-ico">☁️</div>
-          <div class="bring-t">Cloud & Identity</div>
-          <div class="bring-d">AWS, Azure, GCP. IAM misconfigs, privilege escalation, CSPM. Security that holds up.</div>
-        </div>
-      </div>
-
       <div class="about-links">
         <a href="portfolio.html" class="ab-link primary">View Full Portfolio →</a>
         <a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank" class="ab-link">LinkedIn ↗</a>
@@ -921,46 +818,6 @@ footer a:hover{color:var(--accent)}
     </div>
 
     <div class="sr" style="transition-delay:.2s">
-      <div class="info-card">
-        <div class="info-card-top">
-          <div class="info-avatar">KJ</div>
-          <div>
-            <div class="info-name">Krutika Jagdale</div>
-            <div class="info-role">Security Engineer · Detection & AI</div>
-          </div>
-        </div>
-        <div class="info-rows">
-          <div class="info-row">
-            <div class="info-ico-box">📍</div>
-            <div><div class="info-lbl">Location</div><div class="info-val">Denver, Colorado</div></div>
-          </div>
-          <div class="info-row">
-            <div class="info-ico-box">🎓</div>
-            <div><div class="info-lbl">Education</div><div class="info-val">M.S. Cybersecurity<br><span style="color:var(--text2);font-size:.8rem">University of Colorado Denver</span></div></div>
-          </div>
-          <div class="info-row">
-            <div class="info-ico-box">📧</div>
-            <div><div class="info-lbl">Email</div><div class="info-val"><a href="mailto:krutikarajeshjagdale@gmail.com">krutikarajeshjagdale@gmail.com</a></div></div>
-          </div>
-          <div class="info-row">
-            <div class="info-ico-box">💼</div>
-            <div><div class="info-lbl">LinkedIn</div><div class="info-val"><a href="https://www.linkedin.com/in/krutikajagdale/" target="_blank">in/krutikajagdale ↗</a></div></div>
-          </div>
-          <div class="info-row">
-            <div class="info-ico-box">🐙</div>
-            <div><div class="info-lbl">GitHub</div><div class="info-val"><a href="https://github.com/Kruti3101" target="_blank">Kruti3101 ↗</a></div></div>
-          </div>
-          <div class="info-row">
-            <div class="info-ico-box">🏆</div>
-            <div><div class="info-lbl">Top Award</div><div class="info-val">#1 ISACA Denver 2026<br><span style="color:var(--text2);font-size:.8rem">AI Threat Vector Modeling</span></div></div>
-          </div>
-        </div>
-        <div class="avail">
-          <span class="avail-dot"></span>
-          <span>Open to Full-Time Security Engineering Roles</span>
-        </div>
-      </div>
-
       <div class="tl-wrap">
         <div class="tl-hdr">// Career Timeline</div>
         <div class="tl-item">
